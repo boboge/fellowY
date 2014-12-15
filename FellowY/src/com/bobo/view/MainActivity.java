@@ -22,12 +22,12 @@ public class MainActivity extends TabActivity{
 		TabHost tabHost = getTabHost();
 		TabSpec spec1 = tabHost
 				.newTabSpec("one")
-				.setIndicator("¸¸Ä¸",getResources().getDrawable(R.drawable.me))
-				.setContent( new Intent(this, MainActivity.class));
+				.setIndicator("¸ú×ÙÄã",getResources().getDrawable(R.drawable.you))
+				.setContent( new Intent(this, FellowYouActivity.class));
 		TabSpec spec2 = tabHost
 				.newTabSpec("two")
-				.setIndicator("×ÓÅ®",getResources().getDrawable(R.drawable.you))
-				.setContent( new Intent(this, MainActivity.class));
+				.setIndicator("¸ú×ÙÎÒ",getResources().getDrawable(R.drawable.me))
+				.setContent( new Intent(this, FellowMeActivity.class));
 		tabHost.addTab(spec1);
 		tabHost.addTab(spec2);
 		tabHost.setCurrentTab(0);
