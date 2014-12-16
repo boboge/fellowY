@@ -14,8 +14,6 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
 	            Intent ootStartIntent=new Intent(context,MainActivity.class);
 	            ootStartIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            context.startActivity(ootStartIntent);
-	            System.out.println(11111);
-	            context.startActivity(ootStartIntent);
 	        }		
 	}
 
