@@ -1,14 +1,14 @@
 package com.bobo.service;
 
+import android.app.Application;
+import android.app.Service;
+import android.os.Vibrator;
+import android.widget.TextView;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.GeofenceClient;
 import com.baidu.location.LocationClient;
-import android.app.Application;
-import android.app.Service;
-import android.os.Vibrator;
-import android.util.Log;
-import android.widget.TextView;
 
 /**
  * Ö÷Application

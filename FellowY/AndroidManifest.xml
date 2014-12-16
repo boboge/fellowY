@@ -41,7 +41,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-	<!-- 百度地图服务 -->
+	<!-- 百度地图定位服务 -->
 	<service
         android:name="com.baidu.location.f"
         android:enabled="true"
@@ -55,6 +55,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <!-- 地图activity -->
+        <activity android:name=".view.MapActivity"/>
+        
+        
+
         
         <!--开机启动监听广播  -->
 <!-- 	    <receiver android:name=".service.BootBroadcastReceiver">  

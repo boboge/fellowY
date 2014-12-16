@@ -1,7 +1,9 @@
+
 package com.bobo.util;
 
 import java.util.List;
 
+import android.R.string;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +11,10 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 public class Util {
+	
+	public final static String RECEIVE_LOCATION = "receiveLoction";
+	public final static String SEND_LOCTION = "sendLoction";
+	public final static String PHONE_NUMBER = "phoneNumber";
 	
 	//发送短信方法
 	public static void sendSMS(Context context,String number,String message){

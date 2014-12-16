@@ -1,6 +1,5 @@
 package com.bobo.view;
 
-import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
 
 import com.bobo.R;
+import com.bobo.service.MainService;
 
 public class MainActivity extends TabActivity{
 	long startTime;
@@ -18,6 +18,10 @@ public class MainActivity extends TabActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		//启动监听短信服务
+		Intent intent = new Intent(MainActivity.this,MainService.class);
+        startService(intent);
 		
 		TabHost tabHost = getTabHost();
 		TabSpec spec1 = tabHost
