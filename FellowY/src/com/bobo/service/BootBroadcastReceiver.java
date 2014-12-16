@@ -13,7 +13,7 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
 	      if (intent.getAction().equals(action_boot)){
 	            Intent ootStartIntent=new Intent(context,MainActivity.class);
 	            ootStartIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	            context.startActivity(ootStartIntent);
+	            context.startActivity(ootStartIntentaa);
 	        }		
 	}
 
