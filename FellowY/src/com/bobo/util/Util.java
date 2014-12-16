@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 public class Util {
 	
-	public final static String RECEIVE_LOCATION = "receiveLoction";
-	public final static String SEND_LOCTION = "sendLoction";
-	public final static String PHONE_NUMBER = "phoneNumber";
+	//方法名
+	public final static String RECEIVE_LOCATION = "receive_location";
+	public final static String SEND_LOCTION = "send_loction";
 	
 	//发送短信方法
 	public static void sendSMS(Context context,String number,String message){
