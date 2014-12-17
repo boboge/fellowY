@@ -3,11 +3,11 @@ package com.bobo.util;
 
 public class MessageEntity {
 	
-	String function;
+	String function = "";
 	
-	String password;
+	String password = "";
 	
-	String location;
+	String location = "";
 
 	/**
 	 * @return the function

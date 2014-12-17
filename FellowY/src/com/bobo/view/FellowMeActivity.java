@@ -1,6 +1,7 @@
 package com.bobo.view;
 
 import com.bobo.service.LocationApplication;
+import com.bobo.util.SettingManager;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
@@ -11,51 +12,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FellowMeActivity extends Activity {
 	
-	private LocationClient mLocationClient;
-	private TextView LocationResult;
-	private Button start;
-
+	TextView passwdTV;
+	EditText newPasswdET;
+	Button changeBtn;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fellowme);
-		mLocationClient = ((LocationApplication)getApplication()).mLocationClient;
-		LocationResult = (TextView) findViewById(R.id.tv_locationTest);
-		((LocationApplication)getApplication()).mLocationResult = LocationResult;
-		start = (Button) findViewById(R.id.btn_start);
-		start.setOnClickListener(new OnClickListener() {
-			
-			@Override
+		passwdTV=(TextView)findViewById(R.id.tv_passwd);
+		newPasswdET=(EditText)findViewById(R.id.et_new_passwd);
+		changeBtn=(Button)findViewById(R.id.btn_change_passwd);
+		passwdTV.setText(SettingManager.getFellowMePasswd(this));
+		changeBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				InitLocation();
-				
-				if(start.getText().equals("开启定位")){
-					mLocationClient.start();
-					start.setText("关闭定位");
-				}else{
-					mLocationClient.stop();
-					start.setText("开启定位");
+				if (newPasswdET.getText().toString().length()!=0) {
+					SettingManager.setFellowMePasswd(FellowMeActivity.this, newPasswdET.getText().toString());
+					passwdTV.setText(SettingManager.getFellowMePasswd(FellowMeActivity.this));
+					newPasswdET.setText("");
+				}else {
+					Toast.makeText(FellowMeActivity.this, "密码不能为空",Toast.LENGTH_SHORT).show();
 				}
-				
 			}
 		});
-
+		
 	}
-	
-	private void InitLocation(){
-		LocationClientOption option = new LocationClientOption();
-		option.setLocationMode(LocationMode.Hight_Accuracy);//设置定位模式
-		option.setCoorType("gcj02");//返回的定位结果是百度经纬度，默认值gcj02
-		option.setScanSpan(1000);//设置发起定位请求的间隔时间为5000ms
-		option.setIsNeedAddress(true);
-		mLocationClient.setLocOption(option);
-	}
-
-
 }
