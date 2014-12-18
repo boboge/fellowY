@@ -43,7 +43,7 @@ public class Util {
 				public void onReceiveLocation(BDLocation location) {
 					mLocationClient.stop();
 					String address;
-					if (location.getLocType()!=61 && location.getLocType()!=66) {
+					if (location.getLocType()!=61 && location.getLocType()!=66 && location.getLocType()!=161) {
 						address = String.valueOf(location.getLocType());
 					}else {
 						address = location.getLatitude() + ":" + location.getLongitude();

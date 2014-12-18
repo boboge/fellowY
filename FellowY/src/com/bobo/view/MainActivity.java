@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.bobo.R;
 import com.bobo.service.MainService;
+import com.bobo.util.OnReceiveLocationCallBack;
+import com.bobo.util.Util;
 
 public class MainActivity extends TabActivity{
 	long startTime;
@@ -18,6 +20,13 @@ public class MainActivity extends TabActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+        Util.getMyLocation(this, new OnReceiveLocationCallBack() {
+			
+			public void myLocation(String address) {
+				Toast.makeText(MainActivity.this, address, Toast.LENGTH_SHORT).show();
+			}
+		});
 		
 		//启动监听短信服务
 		Intent intent = new Intent(MainActivity.this,MainService.class);
