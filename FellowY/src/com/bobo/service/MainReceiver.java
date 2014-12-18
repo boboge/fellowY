@@ -73,18 +73,18 @@ public class MainReceiver extends BroadcastReceiver {
 				if ((receiveMessageEntity.getFunction().equals(Util.RECEIVE_LOCATION))) {
 						Intent newIntent = new Intent(context,MapActivity.class);	
 						if (receiveMessageEntity.getLocation().equals("") || !receiveMessageEntity.getLocation().contains(":")) {
-							Toast.makeText(context, "»ñÈ¡fellowMeÎ»ÖÃÊ§°Ü´íÎó´úÂë: " + receiveMessageEntity.getLocation(), Toast.LENGTH_SHORT);
+							Toast.makeText(context, "»ñÈ¡fellowMeÎ»ÖÃÊ§°Ü´íÎó´úÂë: " + receiveMessageEntity.getLocation(), Toast.LENGTH_SHORT).show();
 						}else {
 							newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							newIntent.putExtra("x", MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[0]);
-							newIntent.putExtra("y", MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[1]);
+							newIntent.putExtra("x", Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[0]));
+							newIntent.putExtra("y",Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[0]));
 						    context.startActivity(newIntent); 
 						}
 					abortBroadcast();
 				}
 				
 				if ((receiveMessageEntity.getFunction().equals(Util.ERROR_PASSWORD))) {
-					Toast.makeText(context, "ÃÜÂë´íÎó£¡£¡", Toast.LENGTH_SHORT);
+					Toast.makeText(context, "ÃÜÂë´íÎó£¡£¡", Toast.LENGTH_SHORT).show();
 					abortBroadcast();
 				}
 				

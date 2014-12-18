@@ -3,7 +3,7 @@ package com.bobo.util;
 public class MessageOrderManager {
 	
 	public static String toStringOrder(MessageEntity messageEntity) {
-		return messageEntity.getFunction() + ";" + messageEntity.getPassword() + ";" + messageEntity.getLocation() + ";";
+		return messageEntity.getFunction() + ";" + messageEntity.getPassword() + ";" + messageEntity.getLocation();
 	}
 	
 	public static  String[] analyzeStringOrder(String orderString) {
@@ -13,7 +13,7 @@ public class MessageOrderManager {
 	public static MessageEntity StringToObject(String orderString) {
 		MessageEntity messageEntity = new MessageEntity();
 		messageEntity.setFunction(analyzeStringOrder(orderString)[0]);
-		messageEntity.setLocation(analyzeStringOrder(orderString)[1]);
+		messageEntity.setPassword(analyzeStringOrder(orderString)[1]);
 		messageEntity.setLocation(analyzeStringOrder(orderString)[2]);
 		return messageEntity;
 	}
@@ -23,7 +23,11 @@ public class MessageOrderManager {
 	}
 	
 	public static void main(String[] args) {
-		String aa = "123123.11:123213";
-		System.out.println(analyzeLocationString(aa)[1]);
+		String aa = "111;;";
+//		MessageEntity messageEntity = MessageOrderManager.StringToObject(aa);
+//		messageEntity.getLocation();
+//
+//		System.out.println(messageEntity.getLocation());
+		System.out.println(analyzeStringOrder(aa).length);
 	}
 }
