@@ -20,13 +20,7 @@ public class MainActivity extends TabActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
-        Util.getMyLocation(this, new OnReceiveLocationCallBack() {
-			
-			public void myLocation(String address) {
-				Toast.makeText(MainActivity.this, address, Toast.LENGTH_SHORT).show();
-			}
-		});
+	
 		
 		//启动监听短信服务
 		Intent intent = new Intent(MainActivity.this,MainService.class);

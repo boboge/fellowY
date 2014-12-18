@@ -76,7 +76,7 @@ public class MainReceiver extends BroadcastReceiver {
 							Toast.makeText(context, "获取fellowMe位置失败错误代码: " + receiveMessageEntity.getLocation(), Toast.LENGTH_SHORT).show();
 						}else {
 							newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							newIntent.putExtra("x", Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[0]));
+							newIntent.putExtra("x", Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[1]));
 							newIntent.putExtra("y",Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[0]));
 						    context.startActivity(newIntent); 
 						}
