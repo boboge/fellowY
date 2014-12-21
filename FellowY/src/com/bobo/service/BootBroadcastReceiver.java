@@ -1,5 +1,8 @@
 package com.bobo.service;
 
+import com.bobo.view.MainActivity;
+import com.bobo.view.MapActivity;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
