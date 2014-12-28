@@ -21,7 +21,7 @@ public class Util {
 	
 	//·½·¨Ãû
 	public final static String RECEIVE_LOCATION = "receive_location";
-	public final static String SEND_LOCTION = "send_loction";
+	public final static String SEND_LOCTION = "send_location";
 	public final static	String ERROR_PASSWORD = "error_password";
 	
 	/**
