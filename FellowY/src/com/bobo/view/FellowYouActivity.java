@@ -33,6 +33,7 @@ public class FellowYouActivity extends Activity {
 	LinearLayout settingLL;
 	LinearLayout operationLL;
 	Button getLocationBtn;
+	Button getAddressBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class FellowYouActivity extends Activity {
 		settingLL=(LinearLayout)findViewById(R.id.ll_setting);
 		operationLL=(LinearLayout)findViewById(R.id.ll_operation);
 		getLocationBtn=(Button)findViewById(R.id.btn_get_location);
+		getAddressBtn=(Button)findViewById(R.id.btn_get_address);
 		passwdTV.setText(SettingManager.getFellowYouPasswd(this));
 		numberTV.setText(SettingManager.getPhoneNumber(this));
 		changePasswdBtn.setOnClickListener(new OnClickListener() {
@@ -94,6 +96,21 @@ public class FellowYouActivity extends Activity {
 				}else{
 					MessageEntity messageEntity = new MessageEntity();
 					messageEntity.setFunction(Util.SEND_LOCTION);
+					messageEntity.setPassword(SettingManager.getFellowYouPasswd(FellowYouActivity.this));
+					Util.sendSMS(FellowYouActivity.this, SettingManager.getPhoneNumber(FellowYouActivity.this), MessageOrderManager.toStringOrder(messageEntity));
+				}
+			}
+		});
+		
+		getAddressBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if (SettingManager.getFellowYouPasswd(FellowYouActivity.this).length()==0) {
+					Toast.makeText(FellowYouActivity.this, "请先设置匹配密码", Toast.LENGTH_SHORT).show();
+				}else if (SettingManager.getPhoneNumber(FellowYouActivity.this).length()==0) {
+					Toast.makeText(FellowYouActivity.this, "请先设置FellowMe手机号", Toast.LENGTH_SHORT).show();
+				}else{
+					MessageEntity messageEntity = new MessageEntity();
+					messageEntity.setFunction(Util.SEND_ADDRESS);
 					messageEntity.setPassword(SettingManager.getFellowYouPasswd(FellowYouActivity.this));
 					Util.sendSMS(FellowYouActivity.this, SettingManager.getPhoneNumber(FellowYouActivity.this), MessageOrderManager.toStringOrder(messageEntity));
 				}

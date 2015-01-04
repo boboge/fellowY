@@ -1,8 +1,5 @@
 package com.bobo.service;
 
-import com.bobo.view.MainActivity;
-import com.bobo.view.MapActivity;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +13,6 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
 	            mainService.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            context.startService(mainService);
 	        }		
+		
 	}
-
 }

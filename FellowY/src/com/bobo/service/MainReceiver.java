@@ -60,6 +60,11 @@ public class MainReceiver extends BroadcastReceiver {
 								messageEntity.setLocation(address);
 								Util.sendSMS(context, number, MessageOrderManager.toStringOrder(messageEntity));
 							}
+
+							@Override
+							public void myAddress(String address) {
+								
+							}
 						});
 					}else {
 						MessageEntity messageEntity = new MessageEntity();
@@ -68,6 +73,43 @@ public class MainReceiver extends BroadcastReceiver {
 					}
 					abortBroadcast();
 				}
+				
+				
+				//请求方法是：发送fellwme 地址
+				if (receiveMessageEntity.getFunction().equals(Util.SEND_ADDRESS)) {
+					if (receiveMessageEntity.getPassword().equals(SettingManager.getFellowMePasswd(context))) {
+						Util.getMyAddress(context, new OnReceiveLocationCallBack() {
+							@Override
+							public void myLocation(String address) {
+							}
+
+							@Override
+							public void myAddress(String address) {
+								MessageEntity messageEntity = new MessageEntity();
+								messageEntity.setFunction(Util.RECEIVE_ADDRESS);
+								messageEntity.setPassword(SettingManager.getFellowMePasswd(context));
+								messageEntity.setLocation(address);
+								Util.sendSMS(context, number, MessageOrderManager.toStringOrder(messageEntity));
+							}
+						});
+					}else {
+						MessageEntity messageEntity = new MessageEntity();
+						messageEntity.setFunction(Util.ERROR_PASSWORD);
+						Util.sendSMS(context, number, MessageOrderManager.toStringOrder(messageEntity));
+					}
+					abortBroadcast();
+				}
+				
+				//请求方法是：获取fellwme 地址
+				if ((receiveMessageEntity.getFunction().equals(Util.RECEIVE_ADDRESS))) {
+					if (receiveMessageEntity.getLocation().equals("")) {
+						Toast.makeText(context, "获取fellowMe位置失败错误代码: " + receiveMessageEntity.getLocation(), Toast.LENGTH_SHORT).show();
+					}else {
+						Toast.makeText(context, "获取fellowMe地址: " + receiveMessageEntity.getLocation(), Toast.LENGTH_SHORT).show();
+					}
+				abortBroadcast();
+			}				
+				
 				
 				//请求方法：获得fellowme 位置 
 				if ((receiveMessageEntity.getFunction().equals(Util.RECEIVE_LOCATION))) {

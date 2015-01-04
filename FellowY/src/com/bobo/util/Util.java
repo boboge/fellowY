@@ -21,7 +21,9 @@ public class Util {
 	
 	//方法名
 	public final static String RECEIVE_LOCATION = "receive_location";
+	public final static String RECEIVE_ADDRESS = "receive_address";
 	public final static String SEND_LOCTION = "send_location";
+	public final static String SEND_ADDRESS = "send_address";
 	public final static	String ERROR_PASSWORD = "error_password";
 	
 	/**
@@ -52,6 +54,31 @@ public class Util {
 				}
 			});
 			mLocationClient.start();
+	}
+	
+	public static void getMyAddress(Context context,final OnReceiveLocationCallBack callBack) {
+		final LocationClient mLocationClient = new LocationClient(context);
+		LocationClientOption option = new LocationClientOption();
+		option.setOpenGps(true);
+		option.setLocationMode(LocationMode.Hight_Accuracy);//设置定位模式
+		option.setCoorType("bd09ll");//返回的定位结果是百度经纬度，默认值gcj02
+		option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
+		option.setIsNeedAddress(true);
+		mLocationClient.setLocOption(option);
+		mLocationClient.registerLocationListener(new BDLocationListener() {
+			
+			public void onReceiveLocation(BDLocation location) {
+				mLocationClient.stop();
+				String address;
+				if (location.getLocType()!=61 && location.getLocType()!=66 && location.getLocType()!=161) {
+					address = String.valueOf(location.getLocType());
+				}else {
+					address = location.getAddrStr();
+				}
+				callBack.myAddress(address);
+			}
+		});
+		mLocationClient.start();		
 	}
 	
 	/**
