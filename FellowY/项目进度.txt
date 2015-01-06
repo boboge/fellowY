@@ -12,3 +12,14 @@
 
 2014年12月30日
 >>>>后期完善 开机自启动和防止service被杀掉
+
+2015年1月5日
+1.增加获得fellowYou 地址（不是在地址上显示）
+>>>>初步发现进程不会被杀 咱不清楚为什么有时功能失灵后期完善
+
+2015年1月5日
+1.log4Android日志增加用来查看service什么时候没有的
+2.加入“<span style="color:#ff0000;"> android:persistent="true"</span>”来提升service的优先级防止被杀service
+
+2015年1月6日
+1.onStartCommand方法 防止经常被杀

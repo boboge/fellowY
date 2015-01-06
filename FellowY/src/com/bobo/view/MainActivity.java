@@ -12,6 +12,7 @@ import com.bobo.R;
 import com.bobo.service.MainService;
 import com.bobo.util.OnReceiveLocationCallBack;
 import com.bobo.util.Util;
+import com.google.code.microlog4android.config.PropertyConfigurator;
 
 public class MainActivity extends TabActivity{
 	long startTime;
@@ -20,7 +21,8 @@ public class MainActivity extends TabActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-	
+		
+		PropertyConfigurator.getConfigurator(this).configure();	
 		
 		//启动监听短信服务
 		Intent intent = new Intent(MainActivity.this,MainService.class);

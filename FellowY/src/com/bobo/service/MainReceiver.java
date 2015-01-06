@@ -1,6 +1,7 @@
 package com.bobo.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,8 +17,12 @@ import com.bobo.util.OnReceiveLocationCallBack;
 import com.bobo.util.SettingManager;
 import com.bobo.util.Util;
 import com.bobo.view.MapActivity;
+import com.google.code.microlog4android.Logger;
+import com.google.code.microlog4android.LoggerFactory;
 
 public class MainReceiver extends BroadcastReceiver {
+	
+	private static final Logger logger = LoggerFactory.getLogger(BroadcastReceiver.class); 
 	
 	private String number;
 
@@ -59,6 +64,7 @@ public class MainReceiver extends BroadcastReceiver {
 								messageEntity.setPassword(SettingManager.getFellowMePasswd(context));
 								messageEntity.setLocation(address);
 								Util.sendSMS(context, number, MessageOrderManager.toStringOrder(messageEntity));
+								logger.debug(new Date() + "____" + Util.SEND_LOCTION);
 							}
 
 							@Override
@@ -116,7 +122,10 @@ public class MainReceiver extends BroadcastReceiver {
 						Intent newIntent = new Intent(context,MapActivity.class);	
 						if (receiveMessageEntity.getLocation().equals("") || !receiveMessageEntity.getLocation().contains(":")) {
 							Toast.makeText(context, "获取fellowMe位置失败错误代码: " + receiveMessageEntity.getLocation(), Toast.LENGTH_SHORT).show();
+							logger.debug(new Date() + "____" + Util.RECEIVE_LOCATION+"失败");
+
 						}else {
+							logger.debug(new Date() + "____" + Util.RECEIVE_LOCATION+"成功");
 							newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 							newIntent.putExtra("x", Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[1]));
 							newIntent.putExtra("y",Double.parseDouble(MessageOrderManager.analyzeLocationString(receiveMessageEntity.getLocation())[0]));

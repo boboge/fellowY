@@ -27,4 +27,10 @@ public class MainService extends Service{
         Intent it = new Intent(MainService.this, MainService.class);
         this.startService(it);
     }
+    
+    @Override  
+    public int onStartCommand(Intent intent, int flags, int startId) {  
+        flags = START_STICKY;  
+        return super.onStartCommand(intent, flags, startId);  
+    } 
 }
