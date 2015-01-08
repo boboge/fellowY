@@ -22,7 +22,7 @@ import com.google.code.microlog4android.LoggerFactory;
 
 public class MainReceiver extends BroadcastReceiver {
 	
-	private static final Logger logger = LoggerFactory.getLogger(BroadcastReceiver.class); 
+	private static final Logger logger = LoggerFactory.getLogger(MainReceiver.class); 
 	
 	private String number;
 
