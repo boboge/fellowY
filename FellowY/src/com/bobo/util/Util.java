@@ -7,7 +7,10 @@ import android.R.string;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo.State;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -57,6 +60,7 @@ public class Util {
 	}
 	
 	public static void getMyAddress(Context context,final OnReceiveLocationCallBack callBack) {
+		openGPRS(context);
 		final LocationClient mLocationClient = new LocationClient(context);
 		LocationClientOption option = new LocationClientOption();
 		option.setOpenGps(true);
@@ -81,6 +85,15 @@ public class Util {
 		mLocationClient.start();		
 	}
 	
+	private static void openGPRS(Context context) {
+		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);  
+		if(connectivity.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == State.CONNECTED){  
+		     Log.i("xx", "gprs启动");  
+		}else{  
+		     APNTools.openApn(context);  
+		} 		
+	}
+
 	/**
 	 * 发送短信方法
 	 * @param context
