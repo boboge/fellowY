@@ -15,7 +15,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
-import com.bobo.service.LocationApplication;
+import com.bobo.service.ServiceApplication;
 
 public class Util {
 	

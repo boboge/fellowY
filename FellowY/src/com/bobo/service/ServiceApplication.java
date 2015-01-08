@@ -13,7 +13,7 @@ import com.baidu.location.LocationClient;
 /**
  * Ö÷Application
  */
-public class LocationApplication extends Application {
+public class ServiceApplication extends Application {
 	public LocationClient mLocationClient;
 	public GeofenceClient mGeofenceClient;
 	public MyLocationListener mMyLocationListener;

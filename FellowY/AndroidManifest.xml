@@ -90,6 +90,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/fellowy_icon"
+        android:name="com.bobo.service.ServiceApplication"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
@@ -131,7 +132,10 @@
         <activity android:name=".view.FellowMeActivity"/>
         
         <!-- 短信分析处理服务 -->
-        <service android:name=".service.MainService" />
+        <service android:name=".service.MainService" 
+         android:exported="false">
+         <intent-filter android:priority="1000"></intent-filter>  
+         </service>   
         
         <!-- 短信广播处理类 -->
         <receiver android:name=".service.MainReceiver" />

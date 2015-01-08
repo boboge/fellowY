@@ -1,6 +1,6 @@
 package com.bobo.view;
 
-import com.bobo.service.LocationApplication;
+import com.bobo.service.ServiceApplication;
 import com.bobo.util.SettingManager;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
