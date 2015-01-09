@@ -46,6 +46,10 @@ public class MainReceiver extends BroadcastReceiver {
 					e.printStackTrace();
 				}
 				MessageEntity receiveMessageEntity = MessageOrderManager.StringToObject(body);
+				//判断是不是fellowY的
+				if (receiveMessageEntity == null) {
+					return;
+				}
 				Log.i("OUTPUT", "号码来源:" + number);
 				Log.i("OUTPUT", "内容:" + body);
 				if (number.contains("+86")) {

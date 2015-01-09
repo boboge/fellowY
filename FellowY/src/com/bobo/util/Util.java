@@ -28,6 +28,7 @@ public class Util {
 	public final static String SEND_LOCTION = "send_location";
 	public final static String SEND_ADDRESS = "send_address";
 	public final static	String ERROR_PASSWORD = "error_password";
+	public final static	String APP_TAG = "fellowY";
 	
 	/**
 	 * 获得地理位置方法
